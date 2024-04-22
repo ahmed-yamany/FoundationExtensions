@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension String {
+public extension String {
     
     /**
      - Example:
@@ -17,7 +17,7 @@ extension String {
      // char is "e"
      ```
      */
-    public subscript(_ index: Int) -> Character {
+    subscript(_ index: Int) -> Character {
         return self[self.index(self.startIndex, offsetBy: index)]
     }
     
@@ -29,7 +29,7 @@ extension String {
      // substring is nil
      ```
      */
-    public subscript(safe index: Int) -> Character? {
+    subscript(safe index: Int) -> Character? {
         return indices.contains(Index(utf16Offset: index, in: self)) ? self[index] : nil
     }
 
@@ -41,7 +41,7 @@ extension String {
      // substring is "Progra"
      ```
      */
-    public subscript (_ bounds: CountableClosedRange<Int>) -> Self.SubSequence? {
+    subscript (_ bounds: CountableClosedRange<Int>) -> Self.SubSequence? {
         if bounds.upperBound > count - 1 || bounds.upperBound > count - 1 {
             return nil
         }
@@ -58,7 +58,7 @@ extension String {
      // substring is "Progra"
      ```
      */
-    public subscript (_ bounds: CountableRange<Int>) -> Self.SubSequence? {
+    subscript (_ bounds: CountableRange<Int>) -> Self.SubSequence? {
         if bounds.upperBound > count - 1 || bounds.upperBound > count - 1 {
             return nil
         }
@@ -75,7 +75,7 @@ extension String {
     // substring is "ift Programming"
     ```
     */
-    public subscript(bounds: CountablePartialRangeFrom<Int>) -> Self.SubSequence? {
+    subscript(bounds: CountablePartialRangeFrom<Int>) -> Self.SubSequence? {
         if bounds.lowerBound > count - 1 {
             return nil
         }

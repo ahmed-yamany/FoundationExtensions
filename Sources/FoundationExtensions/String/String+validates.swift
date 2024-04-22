@@ -7,13 +7,13 @@
 
 import Foundation
 
-extension String {
+public extension String {
     /// Validate a string against a specified pattern using regular expressions.
     ///
     /// - Parameters:
     ///   - pattern: The regular expression pattern to match against.
     /// - Returns: `true` if the string matches the pattern; otherwise, `false`
-    public func validates(to pattern: String) -> Bool {
+    func validates(to pattern: String) -> Bool {
         let predicate = NSPredicate(format: "SELF MATCHES %@", pattern)
         return predicate.evaluate(with: self)
     }
