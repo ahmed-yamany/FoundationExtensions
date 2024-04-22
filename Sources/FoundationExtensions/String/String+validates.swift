@@ -29,8 +29,13 @@ public extension String {
     /// Check if the string is a valid email address.
     ///
     /// - Returns: `true` if the string is a valid email address; otherwise, `false`.
-    public func isValidEmail() -> Bool {
+    func isValidEmail() -> Bool {
         let emailPattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         return validates(to: emailPattern)
+    }
+    
+    func isLink() -> Bool {
+        let urlRegex = #"^(https?|ftp)://(?:[\w-]+\.)+[a-z]{2,}(?:\/\S*)?$"#
+        return validates(to: urlRegex)
     }
 }

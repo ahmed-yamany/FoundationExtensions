@@ -30,9 +30,9 @@ public extension Array where Element == URL {
     }
 }
 
-public extension Array {
-    mutating 
-    func replaceOrAppend<KeyPathType: Equatable & Identifiable>(
+public extension Array where Element == any Equatable {
+    mutating
+    func replaceOrAppend<KeyPathType: Equatable>(
         _ item: Element,
         by keyPath: KeyPath<Element, KeyPathType>
     ) {
@@ -45,7 +45,7 @@ public extension Array {
     }
     
     mutating 
-    func replaceOrAppend<KeyPathType: Equatable & Identifiable>(
+    func replaceOrAppend<KeyPathType: Equatable>(
         contentsOf items: [Element],
         by keyPath: KeyPath<Element, KeyPathType>
     ) {
