@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension NSSet {
+public extension NSSet {
     func toArray<T>() -> [T] {
         // swiftlint: disable all
         let array = self.map { $0 as? T }.filter {$0 != nil}.map { $0! }
