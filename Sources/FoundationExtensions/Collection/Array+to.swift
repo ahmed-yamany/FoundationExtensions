@@ -9,24 +9,31 @@ import Foundation
 
 public extension Array where Element == Data {
     func  toURL() -> [URL] {
-        // swiftlint: disable force_unwrapping
-        map { URL(dataRepresentation: $0, relativeTo: nil) }.filter { $0 != nil }.map { $0! }
-        // swiftlint: enable force_unwrapping
+        var urls: [URL] = []
+        for case let .some(url) in  map({ URL(dataRepresentation: $0, relativeTo: nil) }) {
+            urls.append(url)
+        }
+        return urls
     }
 }
 
 public extension Array where Element == URL {
     func toData() -> [Data] {
-        // swiftlint: disable force_unwrapping
-        self.map {
+        let allData: [Data?] =  map({
             guard $0.startAccessingSecurityScopedResource() else {
                 debugPrint("Error: could not access content of url: \($0)")
                 return nil
             }
             return try? Data(contentsOf: $0)
+        })
+        
+        var data: [Data] = []
+        
+        for case let .some(i) in allData {
+            data.append(i)
         }
-        .filter { $0 != nil }.map { $0! }
-        // swiftlint: enable force_unwrapping
+        
+        return data
     }
 }
 
