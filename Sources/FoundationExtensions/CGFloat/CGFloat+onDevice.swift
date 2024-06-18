@@ -19,7 +19,7 @@ extension CGFloat {
     ) -> CGFloat {
         let userInterfaceIdiom = UIDevice.current.userInterfaceIdiom
         
-        if userInterfaceIdiom == .phone{
+        if userInterfaceIdiom == .phone {
             return iOS
         } else if userInterfaceIdiom == .pad {
             return iPad

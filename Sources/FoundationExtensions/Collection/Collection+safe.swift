@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 public extension Collection {
     /// Safely retrieves an element at the specified index, if it exists.
     ///
@@ -17,4 +16,3 @@ public extension Collection {
         indices.contains(index) ? self[index] : nil
     }
 }
-
