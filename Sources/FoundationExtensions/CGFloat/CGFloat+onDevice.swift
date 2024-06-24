@@ -8,7 +8,7 @@
 #if canImport(UIKit)
 import UIKit
 
-extension CGFloat {
+public extension CGFloat {
     static func onDevice(
         iOS: CGFloat = 0,
         iPad: CGFloat = 0,
